@@ -135,6 +135,8 @@ sub send_report {
     my $furl    = Furl->new;
     my $headers = [ 'Accept' => 'application/json' ];
     my $res     = $furl->post($url, $headers, $json);
+    
+    
 
     my ($message, $ok);
 
@@ -156,6 +158,9 @@ EOF
 @{[$res->content]}
 EOF
     }
+
+    use Data::Dumper;
+    print STDERR ">>>>>> ", Dumper({ ok => $ok, message => $message, input => { url => $url, headers => $headers, content => $json }});
 
     return {
         ok      => $ok,

@@ -148,6 +148,8 @@ sub send_report {
 @{[$res->code]} @{[$res->message]}
 @{[$content->{message}]}
 @{[$content->{url}]}
+Req URL: @{[$url]}
+JSON: @{[$json]}
 EOF
     }
 
@@ -160,7 +162,7 @@ EOF
     }
 
     use Data::Dumper;
-    print STDERR ">>>>>> ", Dumper({ ok => $ok, message => $message, input => { url => $url, headers => $headers, content => $json }});
+    print ">>>>>> ", Dumper({ ok => $ok, message => $message, input => { url => $url, headers => $headers, content => $json }});
 
     return {
         ok      => $ok,
